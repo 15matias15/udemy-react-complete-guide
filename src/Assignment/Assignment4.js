@@ -15,20 +15,25 @@ const ValidationComponent = (props) => {
 
 const CharComponent = (props) => {
     return (
-        <div
-            style={{
-                display: 'inline-block',
-                padding: 16,
-                textAlign: 'center',
-                margin: 16,
-                border: '1px solid black'
-            }}>
+        <>
             {
                 props.textChar.map((ltr, index) => {
-                    return <p key={index} onClick={() => props.delete(index)}>{ltr}</p>
+                    return (
+                        <div
+                            key={index}
+                            style={{
+                                display: 'inline-block',
+                                padding: 16,
+                                textAlign: 'center',
+                                margin: 16,
+                                border: '1px solid black'
+                            }}
+                            onClick={() => props.delete(index)}>{ltr}
+                        </div>
+                    )
                 })
             }
-        </div>
+        </>
     )
 };
 
