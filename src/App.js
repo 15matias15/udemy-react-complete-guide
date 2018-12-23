@@ -5,9 +5,9 @@ import Person from './Person/Person';
 class App extends Component {
   state = {
     persons: [
-      { name: 'Max', age: 28 },
-      { name: 'Manu', age: 29 },
-      { name: 'Stephanie', age: 26 }
+      { id: 'abc1', name: 'Max', age: 28 },
+      { id: 'abc2', name: 'Manu', age: 29 },
+      { id: 'abc3', name: 'Stephanie', age: 26 }
     ],
     otherState: 'some other value',
     showPersons: false
@@ -22,7 +22,7 @@ class App extends Component {
 
     const persons = [...this.state.persons];
     persons[personIndex] = person;
-    
+
     this.setState({
       persons: persons
     })
@@ -44,7 +44,8 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -68,12 +69,21 @@ class App extends Component {
           }
         </div>
       );
+      style.backgroundColor = 'red';
+    }
+
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push('red');
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push('bold');
     }
 
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
-        <p>This is really working!</p>
+        <p className={classes.join(' ')}>This is really working!</p>
         <button
           style={style}
           onClick={this.switchtogglePersonsHandler}>Toggle Persons
